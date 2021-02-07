@@ -1,67 +1,72 @@
+const fs = require('fs');
+
 // TODO: Create a function that returns a license badge based on which license is passed in
 // If there is no license, return an empty string
-function renderLicenseBadge(license) {}
-
+// function renderLicenseBadge(license) {}
+const renderLicenseBadge = license => {
+  if(!license) {
+    return '';
+  }
+  return 
+    '[![License: MIT](https://img.shields.io/badge/License-${data.license}-blue.svg)]'
+};
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
-function renderLicenseLink(license) {}
+// function renderLicenseLink(license) {}
+const renderLicenseLink = license => {
+  if(!license) {
+    return '';
+  }
+  return '(https://opensource.org/licenses/${data.license})'
+};
 
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
-function renderLicenseSection(license) {}
+// function renderLicenseSection(license) {}
+const renderLicenseSection = license => {
+  if(!license) {
+    return '';
+  }
+  return '--- license section here ---'
+}
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
   return `
-  # ${data.title}
-  > Here goes your awesome project description!
+  # ${data.name}
+  # License
+    ${data.licenseBadge}
   
   ## Table of contents
-  * [General info](#general-info)
-  * [Screenshots](#screenshots)
-  * [Technologies](#technologies)
-  * [Setup](#setup)
-  * [Features](#features)
-  * [Status](#status)
-  * [Inspiration](#inspiration)
+  * [Description](#description)
+  * [Installation](#installation)
+  * [Usage](#usage)
+  * [Contributing](#contributing)
+  * [Tests](#tests)
+  * [Licenses](#licenses)
   * [Contact](#contact)
   
-  ## General info
-  Add more general information about project. What the purpose of the project is? Motivation?
+  ## Description
+    ${data.description}
   
-  ## Screenshots
-  ![Example screenshot](./img/screenshot.png)
   
-  ## Technologies
-  * Tech 1 - version 1.0
-  * Tech 2 - version 2.0
-  * Tech 3 - version 3.0
+  ## Installation
+    ${data.installation}
+
+  ## Usage
+    ${data.usage}
   
-  ## Setup
-  Describe how to install / setup your local environement / add link to demo version.
+  ## Contributing
+    ${data.contributing}
   
-  ## Code Examples
-  Show examples of usage:
-  put-your-code-here
+  ## Tests
+    ${data.tests}
   
-  ## Features
-  List of features ready and TODOs for future development
-  * Awesome feature 1
-  * Awesome feature 2
-  * Awesome feature 3
-  
-  To-do list:
-  * Wow improvement to be done 1
-  * Wow improvement to be done 2
-  
-  ## Status
-  Project is: _in progress_, _finished_, _no longer continue_ and why?
-  
-  ## Inspiration
-  Add here credits. Project inspired by..., based on...
-  
+  ## Licenses
+    ${data.licenseLink}
+   
   ## Contact
-  Created by [@flynerdpl](https://www.flynerd.pl/) - feel free to contact me!
+  Created by [@${username}] - feel free to contact me (@${data.email})!
 `;
 }
 

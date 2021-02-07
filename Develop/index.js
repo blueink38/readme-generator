@@ -1,12 +1,11 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer');
-// const generateMarkdown = require('./util/gnerateMarkdown.js');
+const generateMarkdown = require('./utils/generateMarkdown.js');
 // const { writeFile, copyFile } = require('./utils/generate-site');
 
 
 // TODO: Create an array of questions for user input
-const questions = [];
-const promptUser = () => {
+const questions = () => {
     return inquirer.prompt([
       {
         type: 'input',
@@ -35,133 +34,107 @@ const promptUser = () => {
         }
       },
       {
-        type: 'confirm',
-        name: 'confirmScreenshot',
-        message: 'Would you like to upload a screenshot?',
-        default: true
+        type: 'input',
+        name: 'usage',
+        message: 'How is this used?',
+        validate: usageInput => {
+          if (usageInput) {
+            return true;
+          } else {
+            console.log('Please let us know how to use this!');
+            return false;
+          }
+        }
       },
       {
         type: 'input',
-        name: 'screenshot',
-        message: 'Please upload an image for your screenshot',
-        when: ({ confirmScreenshot }) => confirmScreenshot
+        name: 'contributing',
+        message: 'What contributed to this application?',
+        validate: contributingInput => {
+          if (contributingInput) {
+            return true;
+          } else {
+            console.log('Please list contributers');
+            return false;
+          }
+        }
       },
       {
         type: 'checkbox',
-        name: 'languages',
-        message: 'What did you this project with? (Check all that apply)',
-        choices: ['JavaScript', 'HTML', 'CSS', 'ES6', 'jQuery', 'Bootstrap', 'Node']
+        name: 'license',
+        message: 'What licence(s) would you like listed?',
+        choices: ['Apache 2.0', 'ISC', 'MIT']
       },
-
+      {
+        type: 'input',
+        name: 'installation',
+        message: 'How to install this application',
+        validate: installationInput => {
+          if (installationInput) {
+            return true;
+          } else {
+            console.log('Please give installation instructions');
+            return false;
+          }
+        }
+      },
+      {
+        type: 'input',
+        name: 'github',
+        message: 'What is your GitHub user name?',
+        validate: githubInput => {
+          if (githubInput) {
+            return true;
+          } else {
+            console.log('Please give your GitHub user name');
+            return false;
+          }
+        }
+      },
+      {
+        type: 'input',
+        name: 'email',
+        message: 'What is your email address',
+        validate: emailInput => {
+          if (emailInput) {
+            return true;
+          } else {
+            console.log('Please give your email address');
+            return false;
+          }
+        }
+      },
     ]);
   };
   
 
 
-  const promptProject = portfolioData => {
-    console.log(`
-  =================
-  Add a New Project
-  =================
-  `);
-  
-    // If there's no 'projects' array property, create one
-    if (!portfolioData.projects) {
-      portfolioData.projects = [];
-    }
-    return inquirer
-      .prompt([
-        {
-          type: 'input',
-          name: 'name',
-          message: 'What is the name of your project? (Required)',
-          validate: nameInput => {
-            if (nameInput) {
-              return true;
-            } else {
-              console.log('You need to enter a project name!');
-              return false;
-            }
-          }
-        },
-        {
-          type: 'input',
-          name: 'description',
-          message: 'Provide a description of the project (Required)',
-          validate: descriptionInput => {
-            if (descriptionInput) {
-              return true;
-            } else {
-              console.log('You need to enter a project description!');
-              return false;
-            }
-          }
-        },
-        {
-          type: 'checkbox',
-          name: 'languages',
-          message: 'What did you this project with? (Check all that apply)',
-          choices: ['JavaScript', 'HTML', 'CSS', 'ES6', 'jQuery', 'Bootstrap', 'Node']
-        },
-        {
-          type: 'input',
-          name: 'link',
-          message: 'Enter the GitHub link to your project. (Required)',
-          validate: linkInput => {
-            if (linkInput) {
-              return true;
-            } else {
-              console.log('You need to enter a project GitHub link!');
-              return false;
-            }
-          }
-        },
-        {
-          type: 'confirm',
-          name: 'feature',
-          message: 'Would you like to feature this project?',
-          default: false
-        },
-        {
-          type: 'confirm',
-          name: 'confirmAddProject',
-          message: 'Would you like to enter another project?',
-          default: false
-        }
-      ])
-      .then(projectData => {
-        portfolioData.projects.push(projectData);
-        if (projectData.confirmAddProject) {
-          return promptProject(portfolioData);
-        } else {
-          return portfolioData;
-        }
-      });
-  };
   
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+// function writeToFile(fileName, data) {}
+const writeToFile = (fileName, data) => {
+  return new Promise((resolve, reject) => {
+    false.writeFile('./produced-readme/README.md', fileContent, err => {
+      if (err) {
+        reject(err);
+        return;
+      }
+
+      resolve({
+        ok: true,
+        message: 'README created!'
+      });
+    });
+  });
+};
 
 // TODO: Create a function to initialize app
-function init() {}
-
-// Function call to initialize app
+// function init() {}
 init();
-promptUser()
-  .then(promptProject)
-  .then(portfolioData => {
-    return generatePage(portfolioData);
-  })
-  .then(pageHTML => {
-    return writeFile(pageHTML);
-  })
-  .then(writeFileResponse => {
-    console.log(writeFileResponse);
-    return copyFile();
-  })
-  .then(copyFileResponse => {
-    console.log(copyFileResponse);
+questions()
+  .then(readmeData => {
+    return generateMarkdown(readmeData);
   })
   .catch(err => {
     console.log(err);
