@@ -2,7 +2,7 @@ function generateMarkdown(data) {
   return `
   # ${data.name}
   # License
-  !{badge}(https://img.shields.io/badge/license-${data.license}-blue)
+  ![badge](https://img.shields.io/badge/license-${data.license}-blue)
   
   ## Table of contents
   * [Description](#description)
@@ -11,7 +11,7 @@ function generateMarkdown(data) {
   * [Contributing](#contributing)
   * [Tests](#tests)
   * [Licenses](#licenses)
-  * [Contact](#contact)
+  * [Contact/Questions](#contact)
   
   ## Description
     ${data.description}
@@ -35,8 +35,9 @@ function generateMarkdown(data) {
   Licensed by ${data.license}
 
    
-  ## Contact
-  Created by ${data.name} - feel free to contact me ${data.email}!
+  ## Contact/Questions
+  Created by ${data.github} [readme-generator](https://github.com/blueink38/readme-generator) <br/>
+  Feel free to email me ${data.email} with any questions
 `;
 }
 

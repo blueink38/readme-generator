@@ -1,7 +1,7 @@
 
-  # kjh
+  # readme gen
   # License
-  !{badge}(https://img.shields.io/badge/license-ISC-blue)
+  ![badge](https://img.shields.io/badge/license-MIT-blue)
   
   ## Table of contents
   * [Description](#description)
@@ -10,29 +10,30 @@
   * [Contributing](#contributing)
   * [Tests](#tests)
   * [Licenses](#licenses)
-  * [Contact](#contact)
+  * [Contact/Questions](#contact)
   
   ## Description
-    kjh
+    writes readmes
   
   
   ## Installation
-    jhg
+    node index.js
 
   ## Usage
-    kjh
+    to write stuff
   
   ## Contributing
-    kjh
+    cory 
   
   ## Tests
-    jhg;
+    npm run test
   
   ## Licenses
-  ![badge](https://img.shields.io/badge/license-ISC-blue)
+  ![badge](https://img.shields.io/badge/license-MIT-blue)
   <br/>
-  Licensed by ISC
+  Licensed by MIT
 
    
-  ## Contact
-  Created by [@kjh] - feel free to contact me (@uyr)!
+  ## Contact/Questions
+  Created by blueink38 [readme-generator](https://github.com/blueink38/readme-generator) <br/>
+  Feel free to email me blueink38@yahoo.com with any questions
