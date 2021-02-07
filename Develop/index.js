@@ -1,11 +1,13 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer');
-const generateMarkdown = require('./utils/generateMarkdown.js');
-// const { writeFile, copyFile } = require('./utils/generate-site');
+const fs = require('fs');
+const util = require('util');
+const generateMarkdown = require('./utils/generateMarkdown');
+const writeFileAsync = util.promisify(fs.writeFile);
 
 
 // TODO: Create an array of questions for user input
-const questions = () => {
+function questions() {
     return inquirer.prompt([
       {
         type: 'input',
@@ -80,6 +82,19 @@ const questions = () => {
       },
       {
         type: 'input',
+        name: 'test',
+        message: 'How to test this application?',
+        validate: testInput => {
+          if (testInput) {
+            return true;
+          } else {
+            console.log('Try <npm test>');
+            return false;
+          }
+        }
+      },
+      {
+        type: 'input',
         name: 'github',
         message: 'What is your GitHub user name?',
         validate: githubInput => {
@@ -107,35 +122,17 @@ const questions = () => {
     ]);
   };
   
+async function init() {
+  try {
+    const data = await questions();
+    const generateContent = generateMarkdown(data);
 
-
-  
-
-// TODO: Create a function to write README file
-// function writeToFile(fileName, data) {}
-const writeToFile = (fileName, data) => {
-  return new Promise((resolve, reject) => {
-    false.writeFile('./produced-readme/README.md', fileContent, err => {
-      if (err) {
-        reject(err);
-        return;
-      }
-
-      resolve({
-        ok: true,
-        message: 'README created!'
-      });
-    });
-  });
-};
-
-// TODO: Create a function to initialize app
-// function init() {}
-init();
-questions()
-  .then(readmeData => {
-    return generateMarkdown(readmeData);
-  })
-  .catch(err => {
+    await writeFileAsync('./produced-readme/README.md', generateContent);
+    console.log('README.md was written to produced-readme directory');
+  }
+  catch(err) {
     console.log(err);
-  });
+  }
+}
+
+init();
