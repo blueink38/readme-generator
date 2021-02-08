@@ -65,7 +65,7 @@ function questions() {
         type: 'checkbox',
         name: 'license',
         message: 'What licence(s) would you like listed?',
-        choices: ['Apache 2.0', 'ISC', 'MIT']
+        choices: ['Apache%202.0', 'ISC', 'MIT']
       },
       {
         type: 'input',

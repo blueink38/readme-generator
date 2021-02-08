@@ -1,7 +1,7 @@
 
-  # readme gen
+  # lasdf
   # License
-  ![badge](https://img.shields.io/badge/license-MIT-blue)
+  ![badge](https://img.shields.io/badge/license-ISC-blue)
   
   ## Table of contents
   * [Description](#description)
@@ -13,27 +13,27 @@
   * [Contact/Questions](#contact)
   
   ## Description
-    writes readmes
+    asdf
   
   
   ## Installation
-    node index.js
+    asdf
 
   ## Usage
-    to write stuff
+    asdf
   
   ## Contributing
-    cory 
+    asdf
   
   ## Tests
-    npm run test
+    asdf
   
   ## Licenses
-  ![badge](https://img.shields.io/badge/license-MIT-blue)
+  ![badge](https://img.shields.io/badge/license-ISC-blue)
   <br/>
-  Licensed by MIT
+  Licensed by ISC
 
    
   ## Contact/Questions
-  Created by blueink38 [readme-generator](https://github.com/blueink38/readme-generator) <br/>
-  Feel free to email me blueink38@yahoo.com with any questions
+  Created by asdf [readme-generator](https://github.com/blueink38/readme-generator) <br/>
+  Feel free to email me asdf with any questions
