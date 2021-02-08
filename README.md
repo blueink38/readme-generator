@@ -15,7 +15,7 @@ A simple application that allows a user to write  professional REAME
 In order to spend more time on a project, this little application allows the user to write a professional and unique README from the command line.
 
 ## Screenshots
-![Example screenshot](./img/screenshot.png)
+![Screenshot (26)](https://user-images.githubusercontent.com/72847535/107163624-3ddbca00-6970-11eb-85b2-5dc06f1d8e37.png)
 
 ## Technologies
 * Node.js
