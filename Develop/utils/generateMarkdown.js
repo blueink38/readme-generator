@@ -36,7 +36,7 @@ function generateMarkdown(data) {
 
    
   ## Contact/Questions
-  Created by ${data.github} [readme-generator](https://github.com/blueink38/readme-generator) <br/>
+  Created by https://github.com/${data.github}/ <br/>
   Feel free to email me ${data.email} with any questions
 `;
 }

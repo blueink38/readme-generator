@@ -1,7 +1,7 @@
 
-  # lasdf
+  # asdf
   # License
-  ![badge](https://img.shields.io/badge/license-ISC-blue)
+  ![badge](https://img.shields.io/badge/license--blue)
   
   ## Table of contents
   * [Description](#description)
@@ -17,7 +17,7 @@
   
   
   ## Installation
-    asdf
+    sdf
 
   ## Usage
     asdf
@@ -26,14 +26,14 @@
     asdf
   
   ## Tests
-    asdf
+    sdf
   
   ## Licenses
-  ![badge](https://img.shields.io/badge/license-ISC-blue)
+  ![badge](https://img.shields.io/badge/license--blue)
   <br/>
-  Licensed by ISC
+  Licensed by 
 
    
   ## Contact/Questions
-  Created by asdf [readme-generator](https://github.com/blueink38/readme-generator) <br/>
-  Feel free to email me asdf with any questions
+  Created by https://github.com/email/ <br/>
+  Feel free to email me email@email.com with any questions
